@@ -6,13 +6,26 @@ const connect = () => {
     host: '10.255.255.254',
     port: 50541,
   });
+  
+  // when connected, prints a success message
+  conn.on('connect', () => {
+    console.log('Successfully connected to the server!');
+  });
 
-  conn.on("data", (data) => {
+  // logs data received from the server
+  conn.on('data', (data) => {
     console.log('Message from server:', data.toString());
   });
-  
-  // interpret incoming data as text
-  conn.setEncoding("utf8");
+
+  // logs message when the server ends the connection
+  conn.on('end', () => {
+    console.log('Disconnected from server');
+  });
+
+  // logs an error message when a connection error occurs
+  conn.on('error', (err) => {
+    console.error('Connection error:', err.message);
+  });
 
   return conn;
 };
