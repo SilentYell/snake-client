@@ -10,7 +10,9 @@ const connect = () => {
   // when connected, prints a success message
   conn.on('connect', () => {
     console.log('Successfully connected to the server!');
+    conn.write('Name: NIK');
   });
+
 
   // logs data received from the server
   conn.on('data', (data) => {
