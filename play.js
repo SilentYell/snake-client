@@ -3,7 +3,12 @@ const connect = require("./client");
 console.log("Connecting ...");
 connect();
 
-// setup interface to handle user input from stdin
+const handleUserInput = function(key) {
+  // Check for CTRL+C and terminate the program
+  if (key === '\u0003') {
+    process.exit();
+  }
+};
 
 const setupInput = function() {
   const stdin = process.stdin;
