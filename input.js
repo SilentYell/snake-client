@@ -1,4 +1,4 @@
-const setupInput = function() {
+const setupInput = () => {
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -7,7 +7,7 @@ const setupInput = function() {
   return stdin;
 };
 
-const handleUserInput = function(key) {
+const handleUserInput = (key) => {
   // Check for CTRL+C and terminate the program
   if (key === '\u0003') {
     process.exit();
