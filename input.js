@@ -17,13 +17,13 @@ const handleUserInput = (key) => {
   }
 
   if (key === 'w') {
-    console.log('Move: up');
+    connection.write('Move: up');
   } else if (key === 'a') {
-    console.log('Move: left');
+    connection.write('Move: left');
   } else if (key === 's') {
-    console.log('Move: down');
+    connection.write('Move: down');
   } else if (key === 'd') {
-    console.log('Move: right');
+    connection.write('Move: right');
   }
 };
 
