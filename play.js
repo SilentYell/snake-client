@@ -1,15 +1,5 @@
 const connect = require("./client");
 
-console.log("Connecting ...");
-connect();
-
-const handleUserInput = function(key) {
-  // Check for CTRL+C and terminate the program
-  if (key === '\u0003') {
-    process.exit();
-  }
-};
-
 const setupInput = function() {
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -18,3 +8,15 @@ const setupInput = function() {
   stdin.on("data", handleUserInput);
   return stdin;
 };
+
+const handleUserInput = function(key) {
+  // Check for CTRL+C and terminate the program
+  if (key === '\u0003') {
+    process.exit();
+  }
+};
+
+console.log("Connecting ...");
+
+connect();
+setupInput();
