@@ -1,5 +1,19 @@
 let connection;
 
+const movementKey = {
+  w: 'Move: up',
+  a: 'Move: left',
+  s: 'Move: down',
+  d: 'Move: right'
+};
+
+const snakeMessages = {
+  '1': 'Say: Yum!',
+  '2': 'Say: Outta my way!',
+  '3': 'Say: Jerk!',
+  '4': 'Say: Congrats!'
+};
+
 const setupInput = (conn) => {
   connection = conn;
   const stdin = process.stdin;
@@ -15,15 +29,12 @@ const handleUserInput = (key) => {
   if (key === '\u0003') {
     process.exit();
   }
-
-  if (key === 'w') {
-    connection.write('Move: up');
-  } else if (key === 'a') {
-    connection.write('Move: left');
-  } else if (key === 's') {
-    connection.write('Move: down');
-  } else if (key === 'd') {
-    connection.write('Move: right');
+  //if the key press is from the movement key obj then write that message
+  if (movementKey[key]) {
+    connection.write(movementKey[key]);
+  }
+  if (snakeMessages[key]) {
+    connection.write(snakeMessages[key]);
   }
 };
 
